@@ -354,7 +354,7 @@
             
             if (guides.list && guides.list.length > 0) {
                 
-                rect = jNode.getDim(type == 'svg' ? 'screen' : null);
+                rect = jNode.getDim(isSvg ? 'screen' : null);
                 mtxScreenInv = jNode.getMtx("screen").inverse();
                 
                 for (i=0,N=guides.list.length;i<N;i++) {
