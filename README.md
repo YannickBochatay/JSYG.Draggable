@@ -24,11 +24,10 @@ HTML
 
 Javascript
 ```javascript
-new JSYG(".drag").draggable({
+JSYG(".drag").draggable({
     bounds:0,
     ondrag:function() {
-       var $this = $(this);
-       var dim = $this.getDim();
+       var dim = JSYG(this).getDim();
        console.log(dim.x,dim.y);
     }
 });
