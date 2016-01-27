@@ -95,8 +95,7 @@
         else if (dec === 'top' || dec === 'left') return 0;
         else if (dec === 'bottom' || dec === "right") return 1;
     };
-    
-    
+        
     Draggable.prototype = new JSYG.StdConstruct();
     
     Draggable.prototype.constructor = Draggable;
@@ -105,10 +104,6 @@
      * Champ(s) sur le(s)quel(s) on clique pour déclencher le drag&drop. Par défaut l'élément lui-même.
      */
     Draggable.prototype.field = null;
-    /**
-     * Evenement pour déclencher le drag&drop
-     */
-    Draggable.prototype.event = 'mousedown';
     /**
      * Restriction à un bouton de la souris (1 bouton gauche, 2 bouton du milieu, 3 bouton droit)
      */
@@ -218,12 +213,13 @@
         mouseInit = new JSYG.Vect(e.clientX,e.clientY).mtx(mtxScreenInitInv),
         dimInit = jNode.getDim(),
         mtxScreenParent = parent.getMtx('screen'),
-        cursor,
         bornes = (this.minLeft!=null || this.minTop!=null || this.maxRight!=null || this.maxBottom!=null) ? true : false,
         guides = this.guides,
         hasChanged = false,
         triggerDragStart = false,
-        dimWin = new JSYG(window).getDim();
+        dimWin = new JSYG(window).getDim(),
+        cursor,
+        fcts = {};
         
         if (this.cursor === 'auto') {
             
@@ -501,19 +497,19 @@
             
             if (hasChanged && that.type!=='transform' && that._shape === 'noAttribute') jNode.mtx2attrs({keepRotation:that.keepRotation});
             
-            new JSYG(document).off({
-                'mousemove':mousemoveFct,
-                'mouseup':remove
-            });
+            new JSYG(document).off(fcts);
             
             if (hasChanged) that.trigger('dragend',that.node,e);
+            
             that.trigger('end',that.node,e);
         }
         
-        new JSYG(document).on({
-            'mousemove':mousemoveFct,
-            'mouseup':remove
-        });
+        fcts = {
+            'vmousemove':mousemoveFct,
+            'vmouseup':remove
+        };
+        
+        new JSYG(document).on(fcts);
         
         this.trigger('start',this.node,e);
     };
@@ -533,7 +529,7 @@
         that = this;
         
         function start(e) {
-            if (that.eventWhich && e.which != that.eventWhich) return;
+            if (that.eventWhich && e.which && e.which != that.eventWhich) return;
             that.start(e);
         }
         
@@ -545,13 +541,13 @@
             var field = new JSYG(this);
             field.data('draggableUnselect',this.unselectable);
             this.unselectable = 'on'; //IE
-            field.on(that.event,start);
+            field.on("vmousedown",start);
         });
         
         this.disable = function() {
             new JSYG(this.field).each(function() {
                 var field = new JSYG(this);
-                field.off(that.event,start);
+                field.off("vmousedown",start);
                 this.unselectable = field.data('draggableUnselect');
             });
             jNode.removeData('draggable');
