@@ -186,6 +186,9 @@
      */
     Draggable.prototype.enabled = false;
     
+    function eventName(event) {
+        return (JSYG.isMobile.any ? 'v' : '')+event;
+    }
     /**
      * Démarrage du drag&drop. méthode exécutée sur l'événement "mousedown".
      * @param {Object} e : objet Event.
@@ -504,10 +507,8 @@
             that.trigger('end',that.node,e);
         }
         
-        fcts = {
-            'vmousemove':mousemoveFct,
-            'vmouseup':remove
-        };
+        fcts[ eventName("mousemove") ] = mousemoveFct;
+        fcts[ eventName("mouseup") ] = remove;
         
         new JSYG(document).on(fcts);
         
@@ -526,6 +527,7 @@
         
         var evt = opt && opt.evt,
         jNode= new JSYG(this.node),
+        event = eventName("mousedown"),
         that = this;
         
         function start(e) {
@@ -541,13 +543,13 @@
             var field = new JSYG(this);
             field.data('draggableUnselect',this.unselectable);
             this.unselectable = 'on'; //IE
-            field.on("vmousedown",start);
+            field.on(event,start);
         });
         
         this.disable = function() {
             new JSYG(this.field).each(function() {
                 var field = new JSYG(this);
-                field.off("vmousedown",start);
+                field.off(event,start);
                 this.unselectable = field.data('draggableUnselect');
             });
             jNode.removeData('draggable');
