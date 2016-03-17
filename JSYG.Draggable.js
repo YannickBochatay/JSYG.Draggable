@@ -187,7 +187,7 @@
     Draggable.prototype.enabled = false;
     
     function eventName(event) {
-        return (JSYG.isMobile.any ? 'v' : '')+event;
+        return (JSYG.isMobile && JSYG.isMobile.any ? 'v' : '')+event;
     }
     /**
      * Démarrage du drag&drop. méthode exécutée sur l'événement "mousedown".
