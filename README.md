@@ -1,14 +1,14 @@
 # JSYG.Draggable
-Draggable plugin for JSYG framework
+Draggable plugin for [JSYG framework](https://github.com/YannickBochatay/JSYG)
 
 ##### Demo
 [http://yannickbochatay.github.io/JSYG.Draggable/](http://yannickbochatay.github.io/JSYG.Draggable/)
 
 ##### Installation
 ```shell
-bower install jsyg-draggable
+npm install jsyg-draggable
 ```
-
+You can also install it with bower
 
 ##### Example
 

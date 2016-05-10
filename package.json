@@ -1,0 +1,31 @@
+{
+  "name": "jsyg-draggable",
+  "version": "0.2.3",
+  "description": "Draggable plugin for JSYG framework",
+  "main": "JSYG.Draggable.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/YannickBochatay/JSYG.Draggable.git"
+  },
+  "keywords": [
+    "svg",
+    "jquery",
+    "javascript",
+    "library"
+  ],
+  "author": "Yannick Bochatay",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/YannickBochatay/JSYG.Draggable/issues"
+  },
+  "homepage": "https://github.com/YannickBochatay/JSYG.Draggable#readme",
+  "dependencies": {
+    "jsyg": "^0.6.7"
+  }
+}
