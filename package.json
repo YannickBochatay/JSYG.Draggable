@@ -1,6 +1,6 @@
 {
   "name": "jsyg-draggable",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Draggable plugin for JSYG framework",
   "main": "JSYG.Draggable.js",
   "directories": {
@@ -26,6 +26,6 @@
   },
   "homepage": "https://github.com/YannickBochatay/JSYG.Draggable#readme",
   "dependencies": {
-    "jsyg": "^0.6.7"
+    "jsyg": ">0.0.0"
   }
 }
