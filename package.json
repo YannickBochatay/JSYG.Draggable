@@ -28,8 +28,5 @@
   "dependencies": {
     "jsyg": "^1.0.2"
   },
-  "devDependencies": {
-    "qunit": "^2.6.0",
-    "requirejs": "^2.3.5"
-  }
+  "devDependencies": {}
 }
