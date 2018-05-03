@@ -8,7 +8,6 @@ Draggable plugin for [JSYG framework](https://github.com/YannickBochatay/JSYG)
 ```shell
 npm install jsyg-draggable
 ```
-You can also install it with bower
 
 ### Example
 
